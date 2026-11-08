@@ -94,11 +94,11 @@
       font-size: 0.95rem;
     }
 
-    /* 16:9 responsive frame for WebGL */
+    /* 16:9 standard frame for Game 1 */
     .game-wrapper {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      padding-top: 56.25%;
       background-color: #000;
       border-radius: 6px;
       overflow: hidden;
@@ -112,6 +112,29 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    /* Scaled integer container for NES 256x240 */
+    .nes-wrapper {
+      width: 100%;
+      max-width: 768px; /* 256 * 3 */
+      aspect-ratio: 256 / 240;
+      margin: 0 auto;
+      background-color: #000;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nes-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
     }
 
     .game-actions {
@@ -156,15 +179,14 @@
     </header>
 
     <main>
-      <h2 class="section-title">Featured Project</h2>
+      <h2 class="section-title">Featured Projects</h2>
 
+      <!-- Game 1 -->
       <section class="game-card">
         <h3>Mouse Game Prototype</h3>
         <p>Written in C# using Unity WebGL. A prototype game to test the challenge of clicking a button in multiple
             scenarios where the player does not know the location of their mouse cursor.
         </p>
-        
-        <!-- Embedded Game Build -->
         <div class="game-wrapper">
           <iframe 
             src="game1/index.html"
@@ -172,22 +194,26 @@
             scrolling="no">
           </iframe>
         </div>
-
         <div class="game-actions">
           <a class="btn" href="game1/index.html" target="_blank">Play Fullscreen ↗</a>
         </div>
       </section>
 
+      <!-- Game 2 (NES Integer Scaling) -->
       <section class="game-card">
         <h3>Zelda 1 first dungeon remake</h3>
-            <p>A remake of the first dungeon from The Legend of Zelda written in C# using Unity WebGL.</p>
-                <div class="game-wrapper">
-                    <iframe src="game2/index.html" allowfullscreen scrolling="no"></iframe>
-                </div>
-                <div class="game-actions">
-                    <a class="btn" href="game2/index.html" target="_blank">Play Fullscreen ↗</a>
-                </div>
-        </section>
+        <p>A remake of the first dungeon from The Legend of Zelda written in C# using Unity WebGL.</p>
+        <div class="nes-wrapper">
+          <iframe 
+            src="game2/index.html" 
+            allowfullscreen 
+            scrolling="no">
+          </iframe>
+        </div>
+        <div class="game-actions">
+          <a class="btn" href="game2/index.html" target="_blank">Play Fullscreen ↗</a>
+        </div>
+      </section>
     </main>
 
     <footer>
